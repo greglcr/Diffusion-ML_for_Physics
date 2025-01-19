@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.1.12)  16 JAN 2025 18:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.1.12)  19 JAN 2025 21:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1189,7 +1189,7 @@ File: imgs/framerandom.png Graphic file (type png)
 Package pdftex.def Info: imgs/framerandom.png  used on input line 138.
 (pdftex.def)             Requested size: 61.45703pt x 61.27611pt.
 
-Overfull \vbox (13.14253pt too high) detected at line 138
+Overfull \vbox (28.78246pt too high) detected at line 138
  []
 
 [13
@@ -1249,51 +1249,106 @@ Package pdftex.def Info: imgs/ho_diffusion_process.png  used on input line 155.
 
 ] [28
 
+] [29
+
 ]
-<imgs/ho_implementation_init.png, id=208, 570.933pt x 426.393pt>
-File: imgs/ho_implementation_init.png Graphic file (type png)
-<use imgs/ho_implementation_init.png>
-Package pdftex.def Info: imgs/ho_implementation_init.png  used on input line 21
-7.
+<imgs/gaussiennes/ho_implementation_init.png, id=213, 570.933pt x 426.393pt>
+File: imgs/gaussiennes/ho_implementation_init.png Graphic file (type png)
+<use imgs/gaussiennes/ho_implementation_init.png>
+Package pdftex.def Info: imgs/gaussiennes/ho_implementation_init.png  used on i
+nput line 224.
 (pdftex.def)             Requested size: 245.83282pt x 183.59915pt.
 
-Overfull \vbox (7.91399pt too high) detected at line 217
+Overfull \vbox (7.91399pt too high) detected at line 224
  []
 
-[29
+[30
 
- <./imgs/ho_implementation_init.png>]
-<imgs/ho_gaussian_res.png, id=215, 1149.093pt x 287.6346pt>
-File: imgs/ho_gaussian_res.png Graphic file (type png)
-<use imgs/ho_gaussian_res.png>
-Package pdftex.def Info: imgs/ho_gaussian_res.png  used on input line 217.
-(pdftex.def)             Requested size: 307.28987pt x 76.92064pt.
- [30
+ <./imgs/gaussiennes/ho_implementation_init.png>]
+<imgs/gaussiennes/apprentissage.png, id=220, 1111.15125pt x 297.11pt>
+File: imgs/gaussiennes/apprentissage.png Graphic file (type png)
+<use imgs/gaussiennes/apprentissage.png>
+Package pdftex.def Info: imgs/gaussiennes/apprentissage.png  used on input line
+ 224.
+(pdftex.def)             Requested size: 307.28987pt x 82.16565pt.
+<imgs/gaussiennes/loss.png, id=221, 553.06625pt x 402.50375pt>
+File: imgs/gaussiennes/loss.png Graphic file (type png)
+<use imgs/gaussiennes/loss.png>
+Package pdftex.def Info: imgs/gaussiennes/loss.png  used on input line 224.
+(pdftex.def)             Requested size: 122.91406pt x 89.44778pt.
 
- <./imgs/ho_gaussian_res.png>]
+Overfull \vbox (18.0432pt too high) detected at line 224
+ []
+
 [31
 
-]
-<imgs/spirale_dataset.png, id=228, 570.933pt x 426.393pt>
-File: imgs/spirale_dataset.png Graphic file (type png)
-<use imgs/spirale_dataset.png>
-Package pdftex.def Info: imgs/spirale_dataset.png  used on input line 237.
-(pdftex.def)             Requested size: 245.83282pt x 183.59915pt.
-
-Overfull \vbox (7.91399pt too high) detected at line 237
- []
+ <./imgs/gaussiennes/apprentissage.png> <./imgs/gaussiennes/loss.png>]
+<imgs/deux_gaussiennes/init.png, id=230, 543.02875pt x 407.5225pt>
+File: imgs/deux_gaussiennes/init.png Graphic file (type png)
+<use imgs/deux_gaussiennes/init.png>
+Package pdftex.def Info: imgs/deux_gaussiennes/init.png  used on input line 241
+.
+(pdftex.def)             Requested size: 215.10196pt x 161.42667pt.
 
 [32
 
- <./imgs/spirale_dataset.png>]
-<imgs/res_spirale.png, id=235, 1148.3703pt x 267.399pt>
-File: imgs/res_spirale.png Graphic file (type png)
-<use imgs/res_spirale.png>
-Package pdftex.def Info: imgs/res_spirale.png  used on input line 237.
-(pdftex.def)             Requested size: 307.28987pt x 71.55402pt.
- [33
+ <./imgs/deux_gaussiennes/init.png>]
+<imgs/deux_gaussiennes/apprentissage.png, id=237, 1136.245pt x 307.1475pt>
+File: imgs/deux_gaussiennes/apprentissage.png Graphic file (type png)
+<use imgs/deux_gaussiennes/apprentissage.png>
+Package pdftex.def Info: imgs/deux_gaussiennes/apprentissage.png  used on input
+ line 241.
+(pdftex.def)             Requested size: 307.28987pt x 83.06683pt.
+<imgs/deux_gaussiennes/loss.png, id=238, 541.02126pt x 402.50375pt>
+File: imgs/deux_gaussiennes/loss.png Graphic file (type png)
+<use imgs/deux_gaussiennes/loss.png>
+Package pdftex.def Info: imgs/deux_gaussiennes/loss.png  used on input line 241
+.
+(pdftex.def)             Requested size: 122.91406pt x 91.44383pt.
 
- <./imgs/res_spirale.png>]
+Overfull \vbox (18.81126pt too high) detected at line 241
+ []
+
+[33
+
+ <./imgs/deux_gaussiennes/apprentissage.png> <./imgs/deux_gaussiennes/loss.png>
+]
+<imgs/spirales/spirale_dataset.png, id=246, 570.933pt x 426.393pt>
+File: imgs/spirales/spirale_dataset.png Graphic file (type png)
+<use imgs/spirales/spirale_dataset.png>
+Package pdftex.def Info: imgs/spirales/spirale_dataset.png  used on input line 
+256.
+(pdftex.def)             Requested size: 245.83282pt x 183.59915pt.
+
+Overfull \vbox (23.55391pt too high) detected at line 256
+ []
+
+[34
+
+ <./imgs/spirales/spirale_dataset.png>]
+<imgs/spirales/apprentissage.png, id=253, 1118.1775pt x 301.125pt>
+File: imgs/spirales/apprentissage.png Graphic file (type png)
+<use imgs/spirales/apprentissage.png>
+Package pdftex.def Info: imgs/spirales/apprentissage.png  used on input line 25
+6.
+(pdftex.def)             Requested size: 307.28987pt x 82.75218pt.
+<imgs/spirales/loss.png, id=254, 547.04375pt x 402.50375pt>
+File: imgs/spirales/loss.png Graphic file (type png)
+<use imgs/spirales/loss.png>
+Package pdftex.def Info: imgs/spirales/loss.png  used on input line 256.
+(pdftex.def)             Requested size: 122.91406pt x 90.4366pt.
+
+Overfull \vbox (27.6543pt too high) detected at line 256
+ []
+
+[35
+
+ <./imgs/spirales/apprentissage.png> <./imgs/spirales/loss.png>] [36
+
+]
+[37
+
+]
 \tf@nav=\write6
 \openout6 = `slide.nav'.
 
@@ -1313,13 +1368,13 @@ L3 programming layer <2024-01-22>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `slide.out' has not changed.
-(rerunfilecheck)             Checksum: 26E8A8B54BB15F98CBEC27BE4DFFD5C0;450.
+(rerunfilecheck)             Checksum: 395600E37E927E160F84738B7F3BF69D;494.
  ) 
 Here is how much of TeX's memory you used:
- 26565 strings out of 476182
- 532616 string characters out of 5795595
- 1939975 words of memory out of 5000000
- 47994 multiletter control sequences out of 15000+600000
+ 26626 strings out of 476182
+ 534501 string characters out of 5795595
+ 1940975 words of memory out of 5000000
+ 48047 multiletter control sequences out of 15000+600000
  567439 words of font info for 69 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  102i,13n,123p,1872b,809s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1336,10 +1391,10 @@ public/amsfonts/cm/cmssi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmsy8.pfb>
-Output written on slide.pdf (33 pages, 1554716 bytes).
+Output written on slide.pdf (37 pages, 2041427 bytes).
 PDF statistics:
- 315 PDF objects out of 1000 (max. 8388607)
- 216 compressed objects within 3 object streams
- 69 named destinations out of 1000 (max. 500000)
- 141 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 350 PDF objects out of 1000 (max. 8388607)
+ 237 compressed objects within 3 object streams
+ 77 named destinations out of 1000 (max. 500000)
+ 166 words of extra memory for PDF output out of 10000 (max. 10000000)
 

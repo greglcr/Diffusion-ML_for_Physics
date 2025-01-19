@@ -46,9 +46,9 @@
 % Début du document
 \begin{document}
 	
-	\title{Diffusion Model}
+	\title{Modèle de Diffusion}
 	\subtitle{Machine Learning pour Physicien - Projet}
-	\author{Clément, Grégoire, Nathan}
+	\author{Clément, Grégoire, Eliot}
 	\date{\today}
 	
 	\maketitle
@@ -57,7 +57,7 @@
 	
 	\begin{frame}{Présentation générale}
 		
-		Les modèles de diffusion permettent de générer des images distribuées \alert{de la même manière} qu'un dataset donnée.
+		Les modèles de diffusion permettent de générer des images distribuées \alert{de la même manière} qu'un dataset donné.
 		
 		\begin{figure}
 			\centering
@@ -81,10 +81,10 @@
 		Eliot si tu peux rajouter quelques trucs ici, genre des exemples avec des images
 	\end{frame}
 	
-	\section{Denoising Diffusion Probabilistic Models, théorie}
+	\section{Denoising Diffusion Probabilistic Models (DDPM), théorie}
 	
-	\begin{frame}{General Idea}
-		\only<1>{Consider the set of \alert{hand-written digits $D$}. Can you give a probability distribution $q$ such that \alert{$x \sim q(x)$ ?}
+	\begin{frame}{Idée Générale}
+		\only<1>{Considérons un ensemble de \alert{chiffres écrits à la main $D$}. Peut-on trouver une distribution de probabilité $q$ telle que \alert{$x \sim q(x)$ ?}
 			\begin{figure}
 				\centering
 				\includegraphics[width=0.5\textwidth]{imgs/mnist_sample_digits.png}
@@ -92,7 +92,7 @@
 			\end{figure}
 		}
 		\only<2->{
-			Consider the set of \alert{hand-written digits $D$}. It is hard to find $q$ such that \alert{$x \sim q(x)$}, we need a \alert{clever way to sample hand-written digits}. Consider the following process:
+			Considérons l'ensemble de \alert{chiffres écrits à la main $D$}. Est-il difficile de trouver $q$ tel que \alert{$x \sim q(x)$}, nous avons besoin \alert{d'une manière plus intelligente d’échantillonner nos chiffres écrits à la main}. Examinons le procédé suivant:
 			\begin{figure}
 				\centering
 				\begin{minipage}{0.2\textwidth}
@@ -132,15 +132,15 @@
 				}
 			\end{figure}
 			\only<8->{
-				Formally: $q(x_{t+1} \mid x_t) := \mathcal{N}(x_{t+1}; \sqrt{1 - \beta_t} x_t, \beta_t I)$ for some schedule $(\beta_t)_t$. Can we \alert{learn to reverse this process} ?
+				Formellement : $q(x_{t+1} \mid x_t) := \mathcal{N}(x_{t+1}; \sqrt{1 - \beta_t} x_t, \beta_t I)$ pour une suite $(\beta_t)_t$. Peut-on \alert{apprendre à renverser ce procédé} ?
 			}
 		}
 	\end{frame}
 	
 	
 	
-	\begin{frame}{What we want to learn}
-		Given a noisy image $x_t$, we \alert{train a model to predict $x_{t-1}$}.
+	\begin{frame}{Que veut-on apprendre}
+		En partant d'une image bruitée $x_t$, on \alert{entraîne un modèle pour prédire $x_{t-1}$}.
 		\begin{figure}
 			\centering
 			\includegraphics[width= \textwidth]{imgs/ho_diffusion_process.png}
@@ -148,17 +148,17 @@
 		
 		\only<2->{
 			\begin{itemize}
-				\item{Given a \alert{data image $x_0$}, we sample $(x_t)_{1:T}$ according to $q(x_{1:T} \mid x_0) := \prod_{t=1}^T q(x_t \mid x_{t-1})$,}
-				\only<3->{\item{Given a \alert{noisy image $x_t$} and $t$, we sample according to $p_\theta (x_{t-1} \mid x_t) := \mathcal{N}(x_{t-1} ; \mu_\theta(x_t,t), \Sigma_\theta (x_t,t))$}.}
+				\item{En partant d'un set de données \alert{d'images $x_0$}, on échantillonne $(x_t){1:T}$ selon $q(x{1:T} \mid x_0) := \prod_{t=1}^T q(x_t \mid x_{t-1})$,}
+				\only<3->{\item{Soit une \alert{image bruitée $x_t$} et $t$, on échantillonne selon $p_\theta (x_{t-1} \mid x_t) := \mathcal{N}(x_{t-1} ; \mu_\theta(x_t,t), \Sigma_\theta (x_t,t))$}.}
 			\end{itemize}
 		}
 	\end{frame}
 	
-	\begin{frame}{Decreasing training data generation cost}
-		Given a data image $x_0$, compute $x_t$ takes \alert{$t$ sampling on $q$}. But a \alert{simple trick}, allows to do only one.
+	\begin{frame}{Réduire le coût d'entraînement des données}
+		En partant d'une image $x_0$, calculer $x_t$ prend \alert{$t$ échantillonnage sur $q$}. Mais une \alert{astuce simple}, permet de n'en réaliser qu'un.
 		\uncover<2->{ 
 			
-			Remember that $q(x_{t+1} \mid x_t) := \mathcal{N}(x_{t+1}; \sqrt{1 - \beta_t} x_t, \beta_t I)$. Let $\alert{\alpha_t} = 1 - \beta_t$ and $\alert{\bar{\alpha_t}} = \prod_{i=1}^t \alpha_i$.
+			Rappelons que $q(x_{t+1} \mid x_t) := \mathcal{N}(x_{t+1}; \sqrt{1 - \beta_t} x_t, \beta_t I)$. Posons $\alert{\alpha_t} = 1 - \beta_t$ et $\alert{\bar{\alpha_t}} = \prod_{i=1}^t \alpha_i$.
 			\only<3-7>{
 				\begin{align}
 					x_t &= \sqrt{\alpha_t} x_{t-1} + \sqrt{1 - \alpha_t} \epsilon_{t-1} \nonumber\\
@@ -172,30 +172,30 @@
 						}
 					}
 				\end{align}
-				\uncover<5-7>{Let $G_1 \sim \mathcal{N}(0,\sigma_1^2 I)$, $G_2 \sim \mathcal{N}(0,\sigma_2^2 I)$ , the sum of them gives $g_2 \sim \mathcal{N}(0,(\sigma_1^2 + \sigma_2^2) I)$.}
+				\uncover<5-7>{Posons $G_1 \sim \mathcal{N}(0,\sigma_1^2 I)$, $G_2 \sim \mathcal{N}(0,\sigma_2^2 I)$ , la somme des deux donne $g_2 \sim \mathcal{N}(0,(\sigma_1^2 + \sigma_2^2) I)$.}
 			}
 			\only<8>{
 				
-				We have \alert{$x_t = \sqrt{\bar{\alpha_t}}x_0 + \sqrt{1 - \bar{\alpha_t}} \epsilon$}.
+				On a \alert{$x_t = \sqrt{\bar{\alpha_t}}x_0 + \sqrt{1 - \bar{\alpha_t}} \epsilon$}.
 			}
 		}
 	\end{frame}
 	
-	\begin{frame}{Training}
+	\begin{frame}{Entraînement}
 		\only<1>{
-			For now, our model is learning $\mu$ and $\Sigma$, i.e. we sample according to 
+			Pour l'instant, notre modèle apprend $\mu$ et $\Sigma$, c'est-à-dire qu'on échantillonne selon
 			\begin{align*}
 				p_\theta (x_{t-1} \mid x_t) := \mathcal{N}(x_{t-1} ; \mu_\theta(x_t,t), \Sigma_\theta (x_t,t))
 			\end{align*}
-			They've found that \alert{fixing $\Sigma_\theta$} to a constant gives the same result. So,}
+			\alert{Fixer $\Sigma_\theta$} constant donne le même résultat selon le papier, donc :}
 		\begin{align*}
 			p_\theta (x_{t-1} \mid x_t) := \mathcal{N}(x_{t-1} ; \mu_\theta(x_t,t), \sigma_t I)
 		\end{align*}
 		\only<2->{
-			The probability for our model to generate $x_0$ is $p_\theta (x_0) := \int p_\theta(x_{0:T}) dx_{1:T}$. \only<3->{Using negative log likelihood, approximations and computations, we want to minimize:
+			La probabilité pour notre modèle de générer $x_0$ est $p_\theta (x_0) := \int p_\theta(x_{0:T}) dx_{1:T}$. \only<3->{En utilisant le log-vraisemblance, sous certaines approximations, on cherche à minimiser
 				\begin{align*}
-					E_q \left[\frac{1}{2 \sigma_t^2} \|\tilde{\mu}_t(x_t,x_0) - \mu_\theta(x_t,t)\|^2\right]
-				\end{align*} where $\tilde{\mu}$ is the optimal mean \alert{that depends on $x_0$ \only<3>{which we don't know}}. \only<4>{Using $x_t(x_0,\epsilon) = \sqrt{\bar{\alpha_t}} x_0 + \sqrt{1 - \bar{\alpha_t}} \epsilon$ we \alert{have a loss we can train on}.}
+					E_q \left[\frac{1}{2 \sigma_t^2} \|\tilde{\mu}t(x_t,x_0) - \mu\theta(x_t,t)\|^2\right]
+				\end{align*} où $\tilde{\mu}$ est la moyenne optimale \alert{qui dépend de $x_0$ \only<3>{que nous ne connaissons pas}}. \only<4>{En utilisant $x_t(x_0,\epsilon) = \sqrt{\bar{\alpha_t}} x_0 + \sqrt{1 - \bar{\alpha_t}} \epsilon$ nous \alert{avons une fonction de coût sur laquelle réaliser l'entraînement}.}
 			}
 		}
 		
@@ -203,39 +203,53 @@
 	
 	\begin{frame}{Notre premier modèle : Un simple modèle linéaire}
 		
-		Ici on ajoute un schéma de notre modèle, on parle bien de tout, comment on gère le temps etc...
+		Ici on ajoute un schéma de notre modèle, on parle bien de tout, comment on gère le temps, etc...
 		
 	\end{frame}
 	
-	\begin{frame}{Our results - Gaussian}
-		We have started with \alert{Gaussian generation}\only<1>{:
+	\begin{frame}{Nos résultats - Une gaussienne}
+		On a commencé en essayant de \alert{générer des gaussiennes}\only<1>{:
 			\begin{figure}
 				\centering
-				\includegraphics[width= 0.8\textwidth]{imgs/ho_implementation_init.png}
+				\includegraphics[width= 0.8\textwidth]{imgs/gaussiennes/ho_implementation_init.png}
 			\end{figure}
-		}\only<2>{ and got satisfying results:
+		}\only<2>{ et nous avons eu des résultats encourageants:
 			\begin{figure}
 				\centering
-				\includegraphics[width= \textwidth]{imgs/ho_gaussian_res.png}
+				\includegraphics[width= \textwidth]{imgs/gaussiennes/apprentissage.png}
+				\vfill
+				\includegraphics[width=0.4\textwidth]{imgs/gaussiennes/loss.png}
 			\end{figure}
 		}
 	\end{frame}
 	
-	\begin{frame}{Our results - Deux gaussiennes}
+	\begin{frame}{Nos résultats - Deux gaussiennes}
 		
-		A ajouter
+		On a ensuite essayé avec deux gaussiennes centrées à des endroits différents \only<1>{
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.7\textwidth]{imgs/deux_gaussiennes/init.png}
+		\end{figure} }
+		\only<2> {
+		\begin{figure}
+		\centering
+		\includegraphics[width=\textwidth]{imgs/deux_gaussiennes/apprentissage.png}
+		\vfill
+		\includegraphics[width=0.4\textwidth]{imgs/deux_gaussiennes/loss.png} 
+		\end{figure}}
 		
 	\end{frame}
 	
-	\begin{frame}{Our results - Spirale}
-		Then we moved to a more complicated dataset, \alert{Spirale generation}\only<1>{:
+	\begin{frame}{Nos résultats - Spirale}
+		Nous avons ensuite essayé sur un ensemble de données plus compliqué : \alert{la génération de spirale.}\only<1>{:
 			\begin{figure}
 				\centering
-				\includegraphics[width= 0.8\textwidth]{imgs/spirale_dataset.png}
-		\end{figure}}\only<2>{ and also got satisfying results:
+				\includegraphics[width= 0.8\textwidth]{imgs/spirales/spirale_dataset.png}
+		\end{figure}}\only<2>{ Nous avons également obtenu des résultats satisfaisants :
 			\begin{figure}
 				\centering
-				\includegraphics[width= \textwidth]{imgs/res_spirale.png}
+				\includegraphics[width=\textwidth]{imgs/spirales/apprentissage.png}
+				\includegraphics[width=0.4\textwidth]{imgs/spirales/loss.png}
 			\end{figure}
 		}
 		
