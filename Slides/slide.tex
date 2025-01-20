@@ -76,6 +76,47 @@
 		\end{figure}
 		
 	\end{frame}
+
+	\begin{frame}{Exemple d'application physique : modèle d'Ising 2D}
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.45\linewidth]{Ising_2D.png}
+            \label{fig:enter-label}
+        \end{figure}
+        \begin{equation*}
+            H(\sigma) = -\sum_{\langle i, j \rangle} J_{ij} \sigma_i \sigma_j - \mu \sum_j h_j \sigma_j
+        \end{equation*}
+        \end{frame}
+
+        
+        \begin{frame}{Exemple d'application physique : modèle d'Ising 2D}
+        
+        A température T, on a $p(\Vec{s}) = \frac{1}{Z} \exp\left(-\frac{E(\Vec{s})}{k_B T}\right)$ \\
+        $\implies$ On veut échantillonner des états probables du système \\
+        \vspace{0.8cm}
+        
+        \textbf{But :} Trouver des schémas récurrents d'alignement de spins de matériaux magnétiques, Calculer des grandeurs moyennes caractéristiques... \\
+        \vspace{0.8cm}
+        \textbf{Méthode :} Metropolis Hasting / Diffusion \\
+        $\implies$ Etats discret MH / Etats Continus Diffusion
+	\end{frame}
+
+        \begin{frame}{Exemple d'application physique : Débruitage IRM}
+        \small Les signaux en physique sont naturellement bruités :
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.46\linewidth]{IRM_bruite.png}
+            \caption{IRM avant débruitage}
+        \end{figure}
+        
+        \small Utiliser de la diffusion permet de réduire ce bruit pour rendre les photos interprétables :
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.46\linewidth]{IRM_debruite.png}
+            \caption{IRM débruité}
+            \label{fig:enter-label}
+        \end{figure}
+        \end{frame}
 	
 	\begin{frame}{Application en physique}
 		Eliot si tu peux rajouter quelques trucs ici, genre des exemples avec des images
@@ -255,16 +296,47 @@
 		
 	\end{frame}
 	
-	\begin{frame}{Notre deuxième modèle - Un Unet}
-		
-		Ici ajouter des slides sur les Unet
-		
-	\end{frame}
 	
-	\begin{frame}{Nos résultats - MNIST}
+    
+	\begin{frame}{Notre deuxième modèle - Un UNet}
 		
-		
-		
+		\centering \textbf{UNet} : Réseau de neurones spécialisé en traitement d'images \\
+        $\rightarrow$ Fonctionne par convolutions successives
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.7\linewidth]{UNet global.png}
+            \caption{Structure UNet : Contracting path / Expanding path}
+            \label{fig:enter-label}
+        \end{figure}
 	\end{frame}
+
+        \begin{frame}{Contracting Path}
+        \textbf{But :} Capturer des informations précises
+        \begin{figure}
+            \centering
+            \includegraphics[width=1.0\linewidth]{Couches_convolutions.png}
+            \caption{Contracting path, première couche}
+            \label{fig:enter-label}
+        \end{figure}
+        On applique ensuite un Max pooling pour réduire la résolution.
+        \end{frame}
+
+        \begin{frame}{Expanding Path}
+        \textbf{But :} Reconstruire l'image en mêlant détails et caractéristiques précises
+        \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item On réalise le chemin inverse
+                \item Un "Skip connection" permet de rajouter des détails à la reconstruction
+            \end{itemize}
+        \end{column}
+        
+        % Colonne de droite : Image
+        \begin{column}{0.25\textwidth}
+            \includegraphics[width=\textwidth]{UNet expanding.png}
+        \end{column}
+        \end{columns}
+        
+        \end{frame}
 	
 \end{document}
