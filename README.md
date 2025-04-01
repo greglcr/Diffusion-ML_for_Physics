@@ -1,3 +1,3 @@
 # Diffusion-ML_for_Physics
 
-https://yang-song.net/blog/2021/score/ meilleur papier qu'on ai trouvé pour l'instant
+Projet utilisant des modèles de diffusion appliqué à la génération d'images
